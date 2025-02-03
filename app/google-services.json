@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "561077307116",
+    "project_id": "parteynovedadapp",
+    "storage_bucket": "parteynovedadapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561077307116:android:6c288f07d61497482ec7c9",
+        "android_client_info": {
+          "package_name": "com.protector.parteenovedad"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVQefyckQ2BV7rV_3XZDjrSBIh-4ecdx0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
