@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "561077307116",
+    "firebase_url": "https://parteynovedadapp-default-rtdb.firebaseio.com",
     "project_id": "parteynovedadapp",
     "storage_bucket": "parteynovedadapp.firebasestorage.app"
   },

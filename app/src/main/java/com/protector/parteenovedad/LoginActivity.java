@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import android.util.Log;
 
 
 import android.content.Intent;  // Agregamos esta importación
@@ -20,28 +21,42 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        try {
+            super.onCreate(savedInstanceState);
+            Log.d("LoginActivity", "Iniciando onCreate");
 
-        // Inicializar Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
+            setContentView(R.layout.activity_login);
 
-        // Inicializar vistas
-        emailEditText = findViewById(R.id.emailEditText);
-        passwordEditText = findViewById(R.id.passwordEditText);
-        loginButton = findViewById(R.id.loginButton);
-        registerTextView = findViewById(R.id.registerTextView);
+            mAuth = FirebaseAuth.getInstance();
+            Log.d("LoginActivity", "Firebase Auth inicializado");
 
-        // Configurar click listener para el botón de inicio de sesión
-        loginButton.setOnClickListener(v -> loginUser());
+            // Inicializar vistas
+            emailEditText = findViewById(R.id.emailEditText);
+            passwordEditText = findViewById(R.id.passwordEditText);
+            loginButton = findViewById(R.id.loginButton);
+            registerTextView = findViewById(R.id.registerTextView);
 
-        // Configurar click listener para el texto de registro
-        registerTextView.setOnClickListener(v -> {
-            startActivity(new Intent(LoginActivity.this, ChatActivity.class));
-            finish();
-            // TODO: Implementar navegación a la pantalla de registro
-            Toast.makeText(LoginActivity.this, "Registro próximamente", Toast.LENGTH_SHORT).show();
-        });
+            Log.d("LoginActivity", "Vistas inicializadas");
+
+            // Setup listeners
+            setupClickListeners();
+
+        } catch (Exception e) {
+            Log.e("LoginActivity", "Error en onCreate: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void setupClickListeners() {
+        try {
+            loginButton.setOnClickListener(v -> loginUser());
+            registerTextView.setOnClickListener(v -> {
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                finish();
+            });
+        } catch (Exception e) {
+            Log.e("LoginActivity", "Error configurando listeners: " + e.getMessage());
+        }
     }
 
     private void loginUser() {
@@ -53,19 +68,21 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        // Login exitoso
-                        Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso",
-                                Toast.LENGTH_SHORT).show();
-                        // TODO: Navegar a la actividad principal
-                    } else {
-                        // Si falla el login
-                        Toast.makeText(LoginActivity.this, "Error en el inicio de sesión: "
-                                        + task.getException().getMessage(),
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
+        try {
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, task -> {
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(LoginActivity.this, ChatActivity.class));
+                            finish();
+                        } else {
+                            String errorMessage = task.getException() != null ?
+                                    task.getException().getMessage() :
+                                    "Error de autenticación";
+                            Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_LONG).show();
+                        }
+                    });
+        } catch (Exception e) {
+            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 }
