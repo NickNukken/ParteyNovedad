@@ -1,3 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Parte y Novedad</string>
+    <string name="open_drawer">Abrir menú</string>
+    <string name="close_drawer">Cerrar menú</string>
+
+    <!-- Strings para registro -->
+    <string name="hint_tipo_fuerza">Tipo de Fuerza</string>
+    <string name="hint_categoria">Categoría</string>
+    <string name="hint_grado">Grado</string>
+    <string name="hint_nombres">Nombres</string>
+    <string name="hint_apellidos">Apellidos</string>
+    <string name="hint_cedula">Número de Cédula</string>
+    <string name="hint_telefono">Teléfono</string>
+    <string name="hint_email">Correo electrónico</string>
+    <string name="btn_registrar">Registrarse</string>
+    <string name="txt_login">¿Ya tienes cuenta? Inicia sesión</string>
+    <string name="title_registro">Registro de Usuario</string>
 </resources>

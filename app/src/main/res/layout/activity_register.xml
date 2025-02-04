@@ -10,9 +10,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Registro de Usuario"
+        android:text="@string/title_registro"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:contentDescription="@string/title_registro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +42,8 @@
                     android:id="@+id/tipoFuerzaDropdown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Tipo de Fuerza"
+                    android:hint="@string/hint_tipo_fuerza"
+                    android:contentDescription="@string/hint_tipo_fuerza"
                     android:inputType="none"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,7 +58,8 @@
                     android:id="@+id/categoriaDropdown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Categoría"
+                    android:hint="@string/hint_categoria"
+                    android:contentDescription="@string/hint_categoria"
                     android:inputType="none"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,7 +74,8 @@
                     android:id="@+id/gradoDropdown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Grado"
+                    android:hint="@string/hint_grado"
+                    android:contentDescription="@string/hint_grado"
                     android:inputType="none"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,7 +89,9 @@
                     android:id="@+id/nombresEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nombres"
+                    android:hint="@string/hint_nombres"
+                    android:contentDescription="@string/hint_nombres"
+                    android:textColor="@color/black"
                     android:inputType="textPersonName"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -98,7 +105,9 @@
                     android:id="@+id/apellidosEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Apellidos"
+                    android:hint="@string/hint_apellidos"
+                    android:contentDescription="@string/hint_apellidos"
+                    android:textColor="@color/black"
                     android:inputType="textPersonName"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -112,7 +121,9 @@
                     android:id="@+id/cedulaEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Cédula"
+                    android:hint="@string/hint_cedula"
+                    android:contentDescription="@string/hint_cedula"
+                    android:textColor="@color/black"
                     android:inputType="number"
                     android:maxLength="10"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -127,7 +138,9 @@
                     android:id="@+id/telefonoEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Teléfono"
+                    android:hint="@string/hint_telefono"
+                    android:contentDescription="@string/hint_telefono"
+                    android:textColor="@color/black"
                     android:inputType="phone"
                     android:maxLength="10"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -142,7 +155,9 @@
                     android:id="@+id/emailEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Correo electrónico"
+                    android:hint="@string/hint_email"
+                    android:contentDescription="@string/hint_email"
+                    android:textColor="@color/black"
                     android:inputType="textEmailAddress"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -151,7 +166,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Registrarse"/>
+                android:text="@string/btn_registrar"
+                android:contentDescription="@string/btn_registrar"/>
 
             <TextView
                 android:id="@+id/loginTextView"
@@ -160,7 +176,8 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:text="¿Ya tienes cuenta? Inicia sesión"
+                android:text="@string/txt_login"
+                android:contentDescription="@string/txt_login"
                 android:textColor="@color/design_default_color_primary"/>
 
         </LinearLayout>

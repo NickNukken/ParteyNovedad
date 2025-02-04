@@ -1,113 +1,118 @@
 package com.protector.parteenovedad;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.Toast;
+import android.view.MenuItem;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
+public class ChatActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
-public class ChatActivity extends AppCompatActivity {
-    private RecyclerView messagesRecyclerView;
-    private TextInputEditText messageEditText;
-    private Button sendButton;
-    private MessageAdapter messageAdapter;
+    private DrawerLayout drawerLayout;
     private FirebaseAuth mAuth;
-    private DatabaseReference messagesRef;
-    private String currentUserName;
-    private List<Message> messageList = new ArrayList<>();
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Parte y Novedad - Chat");
-
+        // Inicializar Firebase
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        messagesRef = FirebaseDatabase.getInstance().getReference().child("messages");
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        // Inicializar vistas
-        messagesRecyclerView = findViewById(R.id.messagesRecyclerView);
-        messageEditText = findViewById(R.id.messageEditText);
-        sendButton = findViewById(R.id.sendButton);
+        // Configurar Toolbar
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        // Configurar RecyclerView
-        messagesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        messageAdapter = new MessageAdapter(currentUser.getUid());
-        messagesRecyclerView.setAdapter(messageAdapter);
+        // Configurar Navigation Drawer
+        drawerLayout = findViewById(R.id.drawerLayout);
+        NavigationView navigationView = findViewById(R.id.navigationView);
+        navigationView.setNavigationItemSelectedListener(this);
 
-        // Obtener nombre del usuario actual
-        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference()
-                .child("users").child(currentUser.getUid());
-        userRef.child("name").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                currentUserName = dataSnapshot.getValue(String.class);
-            }
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(ChatActivity.this, "Error al cargar el perfil",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Configurar listener para mensajes
-        messagesRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Message message = dataSnapshot.getValue(Message.class);
-                messageList.add(message);
-                messageAdapter.updateMessages(messageList);
-                messagesRecyclerView.scrollToPosition(messageList.size() - 1);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });
-
-        // Configurar botón de envío
-        sendButton.setOnClickListener(v -> sendMessage());
+        // Cargar información del usuario
+        loadUserInfo();
     }
 
-    private void sendMessage() {
-        String messageText = messageEditText.getText().toString().trim();
-        if (!messageText.isEmpty()) {
-            String senderId = mAuth.getCurrentUser().getUid();
-            long timestamp = System.currentTimeMillis();
+    private void loadUserInfo() {
+        String userId = mAuth.getCurrentUser().getUid();
+        mDatabase.child("users").child(userId).addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            String grado = snapshot.child("grado").getValue(String.class);
+                            String nombres = snapshot.child("nombres").getValue(String.class);
+                            String apellidos = snapshot.child("apellidos").getValue(String.class);
 
-            Message message = new Message(senderId, currentUserName, messageText, timestamp);
-            messagesRef.push().setValue(message);
+                            // Actualizar UI
+                            TextView welcomeText = findViewById(R.id.welcomeText);
+                            welcomeText.setText("Bienvenido, " + grado + " " + nombres + " " + apellidos);
 
-            messageEditText.setText("");
+                            // Actualizar Navigation Header
+                            NavigationView navigationView = findViewById(R.id.navigationView);
+                            TextView headerName = navigationView.getHeaderView(0)
+                                    .findViewById(R.id.headerNameText);
+                            TextView headerGrade = navigationView.getHeaderView(0)
+                                    .findViewById(R.id.headerGradeText);
+
+                            headerName.setText(nombres + " " + apellidos);
+                            headerGrade.setText(grado);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Manejar error
+                    }
+                });
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.nav_home) {
+            // Implementar navegación a inicio
+        } else if (id == R.id.nav_profile) {
+            // Implementar navegación a perfil
+        } else if (id == R.id.nav_settings) {
+            // Implementar navegación a configuración
+        } else if (id == R.id.nav_logout) {
+            mAuth.signOut();
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
     }
 }

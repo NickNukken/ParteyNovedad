@@ -26,79 +26,179 @@ activity_register.xml</font>
         <span class="s1">android:id</span><span class="s2">=&quot;@+id/titleTextView&quot;</span>
         <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
         <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-        <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;64dp&quot;</span>
-        <span class="s1">android:text</span><span class="s2">=&quot;Registro&quot;</span>
+        <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;32dp&quot;</span>
+        <span class="s1">android:text</span><span class="s2">=&quot;@string/title_registro&quot;</span>
+        <span class="s1">android:textColor</span><span class="s2">=&quot;@color/black&quot;</span>
         <span class="s1">android:textSize</span><span class="s2">=&quot;24sp&quot;</span>
         <span class="s1">android:textStyle</span><span class="s2">=&quot;bold&quot;</span>
+        <span class="s1">android:contentDescription</span><span class="s2">=&quot;@string/title_registro&quot;</span>
         <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
         <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
         <span class="s1">app:layout_constraintTop_toTopOf</span><span class="s2">=&quot;parent&quot; </span><span class="s0">/&gt;</span>
 
-    <span class="s0">&lt;com.google.android.material.textfield.TextInputLayout</span>
-        <span class="s1">android:id</span><span class="s2">=&quot;@+id/nameLayout&quot;</span>
+    <span class="s0">&lt;ScrollView</span>
         <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
-        <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-        <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;32dp&quot;</span>
-        <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/titleTextView&quot;</span><span class="s0">&gt;</span>
+        <span class="s1">android:layout_height</span><span class="s2">=&quot;0dp&quot;</span>
+        <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
+        <span class="s1">app:layout_constraintBottom_toBottomOf</span><span class="s2">=&quot;parent&quot;</span>
+        <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@id/titleTextView&quot;</span><span class="s0">&gt;</span>
 
-        <span class="s0">&lt;com.google.android.material.textfield.TextInputEditText</span>
-            <span class="s1">android:id</span><span class="s2">=&quot;@+id/nameEditText&quot;</span>
+        <span class="s0">&lt;LinearLayout</span>
             <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
             <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-            <span class="s1">android:hint</span><span class="s2">=&quot;Nombre completo&quot;</span>
-            <span class="s1">android:inputType</span><span class="s2">=&quot;textPersonName&quot; </span><span class="s0">/&gt;</span>
-    <span class="s0">&lt;/com.google.android.material.textfield.TextInputLayout&gt;</span>
+            <span class="s1">android:orientation</span><span class="s2">=&quot;vertical&quot;</span><span class="s0">&gt;</span>
 
-    <span class="s0">&lt;com.google.android.material.textfield.TextInputLayout</span>
-        <span class="s1">android:id</span><span class="s2">=&quot;@+id/emailLayout&quot;</span>
-        <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
-        <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-        <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
-        <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/nameLayout&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;com.google.android.material.textfield.TextInputLayout</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/tipoFuerzaLayout&quot;</span>
+                <span class="s1">style</span><span class="s2">=&quot;@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;8dp&quot;</span><span class="s0">&gt;</span>
 
-        <span class="s0">&lt;com.google.android.material.textfield.TextInputEditText</span>
-            <span class="s1">android:id</span><span class="s2">=&quot;@+id/emailEditText&quot;</span>
-            <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
-            <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-            <span class="s1">android:hint</span><span class="s2">=&quot;Correo electrónico&quot;</span>
-            <span class="s1">android:inputType</span><span class="s2">=&quot;textEmailAddress&quot; </span><span class="s0">/&gt;</span>
-    <span class="s0">&lt;/com.google.android.material.textfield.TextInputLayout&gt;</span>
+                <span class="s0">&lt;AutoCompleteTextView</span>
+                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/tipoFuerzaDropdown&quot;</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:hint</span><span class="s2">=&quot;@string/hint_tipo_fuerza&quot;</span>
+                    <span class="s1">android:contentDescription</span><span class="s2">=&quot;@string/hint_tipo_fuerza&quot;</span>
+                    <span class="s1">android:inputType</span><span class="s2">=&quot;none&quot;</span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;/com.google.android.material.textfield.TextInputLayout&gt;</span>
 
-    <span class="s0">&lt;com.google.android.material.textfield.TextInputLayout</span>
-        <span class="s1">android:id</span><span class="s2">=&quot;@+id/passwordLayout&quot;</span>
-        <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
-        <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-        <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
-        <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/emailLayout&quot;</span>
-        <span class="s1">app:passwordToggleEnabled</span><span class="s2">=&quot;true&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;com.google.android.material.textfield.TextInputLayout</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/categoriaLayout&quot;</span>
+                <span class="s1">style</span><span class="s2">=&quot;@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;8dp&quot;</span><span class="s0">&gt;</span>
 
-        <span class="s0">&lt;com.google.android.material.textfield.TextInputEditText</span>
-            <span class="s1">android:id</span><span class="s2">=&quot;@+id/passwordEditText&quot;</span>
-            <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
-            <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-            <span class="s1">android:hint</span><span class="s2">=&quot;Contraseña&quot;</span>
-            <span class="s1">android:inputType</span><span class="s2">=&quot;textPassword&quot; </span><span class="s0">/&gt;</span>
-    <span class="s0">&lt;/com.google.android.material.textfield.TextInputLayout&gt;</span>
+                <span class="s0">&lt;AutoCompleteTextView</span>
+                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/categoriaDropdown&quot;</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:hint</span><span class="s2">=&quot;@string/hint_categoria&quot;</span>
+                    <span class="s1">android:contentDescription</span><span class="s2">=&quot;@string/hint_categoria&quot;</span>
+                    <span class="s1">android:inputType</span><span class="s2">=&quot;none&quot;</span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;/com.google.android.material.textfield.TextInputLayout&gt;</span>
 
-    <span class="s0">&lt;Button</span>
-        <span class="s1">android:id</span><span class="s2">=&quot;@+id/registerButton&quot;</span>
-        <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
-        <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-        <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;24dp&quot;</span>
-        <span class="s1">android:text</span><span class="s2">=&quot;Registrarse&quot;</span>
-        <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/passwordLayout&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;com.google.android.material.textfield.TextInputLayout</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/gradoLayout&quot;</span>
+                <span class="s1">style</span><span class="s2">=&quot;@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;8dp&quot;</span><span class="s0">&gt;</span>
 
-    <span class="s0">&lt;TextView</span>
-        <span class="s1">android:id</span><span class="s2">=&quot;@+id/loginTextView&quot;</span>
-        <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
-        <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-        <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
-        <span class="s1">android:text</span><span class="s2">=&quot;¿Ya tienes cuenta? Inicia sesión&quot;</span>
-        <span class="s1">android:textColor</span><span class="s2">=&quot;@color/design_default_color_primary&quot;</span>
-        <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
-        <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
-        <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/registerButton&quot; </span><span class="s0">/&gt;</span>
+                <span class="s0">&lt;AutoCompleteTextView</span>
+                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/gradoDropdown&quot;</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:hint</span><span class="s2">=&quot;@string/hint_grado&quot;</span>
+                    <span class="s1">android:contentDescription</span><span class="s2">=&quot;@string/hint_grado&quot;</span>
+                    <span class="s1">android:inputType</span><span class="s2">=&quot;none&quot;</span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;/com.google.android.material.textfield.TextInputLayout&gt;</span>
 
+            <span class="s0">&lt;com.google.android.material.textfield.TextInputLayout</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/nombresLayout&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;8dp&quot;</span><span class="s0">&gt;</span>
+
+                <span class="s0">&lt;com.google.android.material.textfield.TextInputEditText</span>
+                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/nombresEditText&quot;</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:hint</span><span class="s2">=&quot;@string/hint_nombres&quot;</span>
+                    <span class="s1">android:contentDescription</span><span class="s2">=&quot;@string/hint_nombres&quot;</span>
+                    <span class="s1">android:textColor</span><span class="s2">=&quot;@color/black&quot;</span>
+                    <span class="s1">android:inputType</span><span class="s2">=&quot;textPersonName&quot;</span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;/com.google.android.material.textfield.TextInputLayout&gt;</span>
+
+            <span class="s0">&lt;com.google.android.material.textfield.TextInputLayout</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/apellidosLayout&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;8dp&quot;</span><span class="s0">&gt;</span>
+
+                <span class="s0">&lt;com.google.android.material.textfield.TextInputEditText</span>
+                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/apellidosEditText&quot;</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:hint</span><span class="s2">=&quot;@string/hint_apellidos&quot;</span>
+                    <span class="s1">android:contentDescription</span><span class="s2">=&quot;@string/hint_apellidos&quot;</span>
+                    <span class="s1">android:textColor</span><span class="s2">=&quot;@color/black&quot;</span>
+                    <span class="s1">android:inputType</span><span class="s2">=&quot;textPersonName&quot;</span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;/com.google.android.material.textfield.TextInputLayout&gt;</span>
+
+            <span class="s0">&lt;com.google.android.material.textfield.TextInputLayout</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/cedulaLayout&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;8dp&quot;</span><span class="s0">&gt;</span>
+
+                <span class="s0">&lt;com.google.android.material.textfield.TextInputEditText</span>
+                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/cedulaEditText&quot;</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:hint</span><span class="s2">=&quot;@string/hint_cedula&quot;</span>
+                    <span class="s1">android:contentDescription</span><span class="s2">=&quot;@string/hint_cedula&quot;</span>
+                    <span class="s1">android:textColor</span><span class="s2">=&quot;@color/black&quot;</span>
+                    <span class="s1">android:inputType</span><span class="s2">=&quot;number&quot;</span>
+                    <span class="s1">android:maxLength</span><span class="s2">=&quot;10&quot;</span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;/com.google.android.material.textfield.TextInputLayout&gt;</span>
+
+            <span class="s0">&lt;com.google.android.material.textfield.TextInputLayout</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/telefonoLayout&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;8dp&quot;</span><span class="s0">&gt;</span>
+
+                <span class="s0">&lt;com.google.android.material.textfield.TextInputEditText</span>
+                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/telefonoEditText&quot;</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:hint</span><span class="s2">=&quot;@string/hint_telefono&quot;</span>
+                    <span class="s1">android:contentDescription</span><span class="s2">=&quot;@string/hint_telefono&quot;</span>
+                    <span class="s1">android:textColor</span><span class="s2">=&quot;@color/black&quot;</span>
+                    <span class="s1">android:inputType</span><span class="s2">=&quot;phone&quot;</span>
+                    <span class="s1">android:maxLength</span><span class="s2">=&quot;10&quot;</span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;/com.google.android.material.textfield.TextInputLayout&gt;</span>
+
+            <span class="s0">&lt;com.google.android.material.textfield.TextInputLayout</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/emailLayout&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;8dp&quot;</span><span class="s0">&gt;</span>
+
+                <span class="s0">&lt;com.google.android.material.textfield.TextInputEditText</span>
+                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/emailEditText&quot;</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:hint</span><span class="s2">=&quot;@string/hint_email&quot;</span>
+                    <span class="s1">android:contentDescription</span><span class="s2">=&quot;@string/hint_email&quot;</span>
+                    <span class="s1">android:textColor</span><span class="s2">=&quot;@color/black&quot;</span>
+                    <span class="s1">android:inputType</span><span class="s2">=&quot;textEmailAddress&quot;</span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;/com.google.android.material.textfield.TextInputLayout&gt;</span>
+
+            <span class="s0">&lt;Button</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/registerButton&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;24dp&quot;</span>
+                <span class="s1">android:text</span><span class="s2">=&quot;@string/btn_registrar&quot;</span>
+                <span class="s1">android:contentDescription</span><span class="s2">=&quot;@string/btn_registrar&quot;</span><span class="s0">/&gt;</span>
+
+            <span class="s0">&lt;TextView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/loginTextView&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_gravity</span><span class="s2">=&quot;center&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginBottom</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:text</span><span class="s2">=&quot;@string/txt_login&quot;</span>
+                <span class="s1">android:contentDescription</span><span class="s2">=&quot;@string/txt_login&quot;</span>
+                <span class="s1">android:textColor</span><span class="s2">=&quot;@color/design_default_color_primary&quot;</span><span class="s0">/&gt;</span>
+
+        <span class="s0">&lt;/LinearLayout&gt;</span>
+    <span class="s0">&lt;/ScrollView&gt;</span>
 <span class="s0">&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span></pre>
 </body>
 </html>

@@ -380,8 +380,8 @@ public class RegisterActivity extends AppCompatActivity {
             showToast("Ingrese sus apellidos");
             return false;
         }
-        if (cedula.isEmpty() || cedula.length() != 10) {
-            showToast("Ingrese una cédula válida de 10 dígitos");
+        if (cedula.isEmpty() || cedula.length() < 8 || cedula.length() > 10) {
+            showToast("Ingrese una cédula válida (entre 8 y 10 dígitos)");
             return false;
         }
         if (telefono.isEmpty() || telefono.length() != 10) {
